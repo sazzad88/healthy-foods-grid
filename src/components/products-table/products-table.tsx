@@ -6,9 +6,25 @@ import ProductsTableItem from './product-table-item'
 
 const ProductsTable: React.FC = () => {
   const [products, setProducts] = useState<Product[] | []>([])
-
+  const [selectedProducts, setSelectedProducts] = useState<string[] | []>([])
   // TODO Feature 1: Display products in a rich text table
   // TODO Feature 2: Compare two products
+
+  const attachProduct = (productId: string) => {
+    // console.log(productId)
+    let selected: string[] = [...selectedProducts]
+
+    if (selected.indexOf(productId) === -1) {
+      if (selected.length === 2) {
+        selected = selected.slice(1)
+      }
+      selected.push(productId)
+    } else {
+      selected = selected.filter((item: string) => item !== productId)
+    }
+
+    setSelectedProducts(selected)
+  }
 
   useEffect(() => {
     getProducts().then((response) => {
@@ -35,7 +51,12 @@ const ProductsTable: React.FC = () => {
         </thead>
         <tbody>
           {products.map((product: Product) => (
-            <ProductsTableItem key={product.id} product={product} />
+            <ProductsTableItem
+              highlight={selectedProducts.includes(product.id)}
+              key={product.id}
+              product={product}
+              attachProduct={attachProduct}
+            />
           ))}
         </tbody>
       </table>

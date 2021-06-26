@@ -14,3 +14,7 @@
   cursor: pointer;
   text-align: center;
 }
+
+.selected {
+  background: #603d46;
+}

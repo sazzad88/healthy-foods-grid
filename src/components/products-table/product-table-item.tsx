@@ -3,9 +3,22 @@ import React from 'react'
 import styles from './Products-table.module.css'
 import { Product } from '@/api/types'
 
-function ProductsTableItem({ product }: { product: Product }) {
+function ProductsTableItem({
+  highlight,
+  product,
+  attachProduct
+}: {
+  highlight: boolean
+  product: Product
+  attachProduct: (id: string) => void
+}) {
   return (
-    <tr>
+    <tr
+      className={highlight ? styles.selected : ''}
+      onClick={() => {
+        attachProduct(product.id)
+      }}
+    >
       <td>{product.name}</td>
       <td>{product.tags ? product.tags.join(',') : '-'}</td>
       <td>{product.energy}</td>
