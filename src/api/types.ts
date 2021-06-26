@@ -8,6 +8,7 @@ interface ProductNutritionDTO {
   sugars: number
   dietaryFibre: number
   sodium: number
+  fat: number
 }
 
 interface ProductDTOBase {

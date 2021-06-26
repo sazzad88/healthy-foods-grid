@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { getProducts } from '@/api/products'
 import styles from './Products-table.module.css'
 import { Product } from '@/api/types'
+import ProductsTableItem from './product-table-item'
 
 const ProductsTable: React.FC = () => {
   const [products, setProducts] = useState<Product[] | []>([])
@@ -10,7 +11,6 @@ const ProductsTable: React.FC = () => {
   // TODO Feature 2: Compare two products
 
   useEffect(() => {
-    console.log('load products')
     getProducts().then((response) => {
       console.log(response)
       const products: Product[] = response.slice(0, 10)
@@ -35,17 +35,7 @@ const ProductsTable: React.FC = () => {
         </thead>
         <tbody>
           {products.map((product: Product) => (
-            <tr key={product.id}>
-              <td>{product.name}</td>
-              <td>{product.tags ? product.tags.join(',') : '-'}</td>
-              <td>{product.name}</td>
-              <td>{product.name}</td>
-              <td>{product.name}</td>
-              <td>{product.name}</td>
-              <td>{product.name}</td>
-              <td>{product.name}</td>
-              <td>{product.name}</td>
-            </tr>
+            <ProductsTableItem key={product.id} product={product} />
           ))}
         </tbody>
       </table>
