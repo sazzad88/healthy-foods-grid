@@ -3,7 +3,8 @@
   background: #424242;
 }
 
-.datatable thead {
+.datatable thead,
+.compare {
   background: #303030;
   border-color: #303030;
 }
@@ -17,4 +18,20 @@
 
 .selected {
   background: #603d46;
+}
+
+.tag {
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.red {
+  background-color: #f50258;
+  text-decoration: line-through;
+  margin-right: 2px;
+}
+
+.blue {
+  background-color: #3f51b5;
+  margin-left: 2px;
 }

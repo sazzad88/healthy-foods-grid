@@ -23,6 +23,10 @@ export interface ProductDTO extends ProductDTOBase {
 
 export interface Product extends ProductDTOBase, ProductNutritionDTO {}
 
+export interface ProductMap {
+  [name: string]: Product
+}
+
 export type ProductsMap = Record<ProductId, Product>
 
 export interface ProductPropertyEntryDTO {
