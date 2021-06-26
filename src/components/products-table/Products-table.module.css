@@ -33,6 +33,11 @@
   color: #8a8a8a;
 }
 
+.tableContainer {
+  overflow-y: auto;
+  max-height: 650px;
+}
+
 .datatable {
   margin: 0px;
   background: #424242;
@@ -46,7 +51,7 @@
 
 .datatable th,
 .datatable td {
-  padding: 20px 20px;
+  padding: 15px 15px;
   cursor: pointer;
   text-align: center;
 }

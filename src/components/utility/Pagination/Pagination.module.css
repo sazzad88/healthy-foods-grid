@@ -1,0 +1,17 @@
+.pagination {
+  background: #424242;
+  padding: 15px;
+  text-align: right;
+}
+
+.pageIndicator {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+.pageIndicator.disabled {
+  color: gray;
+  cursor: auto;
+}
