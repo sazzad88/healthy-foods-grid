@@ -15,8 +15,6 @@ const ProductsTable: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
   const [perPage, setPerPage] = useState<number>(10)
   const [pageNum, setPageNum] = useState<number>(1)
-  // TODO Feature 1: Display products in a rich text table
-  // TODO Feature 2: Compare two products
 
   const attachProduct = (productId: string) => {
     let selected: string[] = [...selectedProducts]
@@ -50,6 +48,7 @@ const ProductsTable: React.FC = () => {
       setProductsMap(productsMap)
     })
   }, [])
+
   return (
     <>
       {loading ? (

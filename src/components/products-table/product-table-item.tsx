@@ -19,8 +19,8 @@ function ProductsTableItem({
         attachProduct(product.id)
       }}
     >
-      <td>{product.name}</td>
-      <td>{product.tags ? product.tags.join(',') : '-'}</td>
+      <td style={{ width: '150px' }}>{product.name}</td>
+      <td style={{ width: '180px' }}>{product.tags ? product.tags.join(',') : '-'}</td>
       <td>{product.energy}</td>
       <td>{product.protein}</td>
       <td>{product.fat}</td>
