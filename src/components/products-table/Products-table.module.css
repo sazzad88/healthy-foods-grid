@@ -51,6 +51,10 @@
   text-align: center;
 }
 
+.compare td {
+  padding: 15px 5px;
+}
+
 .selected {
   background: #603d46;
 }
