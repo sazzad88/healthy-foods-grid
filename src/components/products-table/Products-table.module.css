@@ -41,6 +41,8 @@
 .datatable {
   margin: 0px;
   background: #424242;
+  border: none;
+  border-collapse: collapse;
 }
 
 .datatable thead,
