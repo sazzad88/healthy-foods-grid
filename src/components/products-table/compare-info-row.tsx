@@ -6,8 +6,8 @@ function CompareInfo({ product1, product2 }: { product1: Product; product2: Prod
   const compareMarkup = (key: string) => {
     return product1[key] !== product2[key] ? (
       <>
-        <span className={`${styles.tag} ${styles.red}`}>{product1[key]}</span>
-        <span className={`${styles.tag} ${styles.blue}`}>{product2[key]}</span>
+        {product1[key] !== undefined ? <span className={`${styles.tag} ${styles.red}`}>{product1[key]}</span> : null}
+        {product2[key] !== undefined ? <span className={`${styles.tag} ${styles.blue}`}>{product2[key]}</span> : null}
       </>
     ) : (
       product1[key]

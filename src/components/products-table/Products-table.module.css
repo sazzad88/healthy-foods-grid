@@ -1,5 +1,40 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #424242;
+  padding: 10px;
+}
+
+.btn {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: #e0e0e0;
+  color: black;
+  cursor: pointer;
+  padding: 10px 15px;
+  display: inline-block;
+
+  text-transform: uppercase;
+  /* letter-spacing: 1px; */
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.btn:disabled {
+  background-color: #595959;
+  color: #8a8a8a;
+}
+
 .datatable {
-  margin: 20px 0;
+  margin: 0px;
   background: #424242;
 }
 
