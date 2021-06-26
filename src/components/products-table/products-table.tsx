@@ -15,6 +15,7 @@ const ProductsTable: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
   const [perPage, setPerPage] = useState<number>(10)
   const [pageNum, setPageNum] = useState<number>(1)
+  const [comparableColumns, setComparableColumns] = useState<string[] | []>([])
 
   const attachProduct = (productId: string) => {
     let selected: string[] = [...selectedProducts]
@@ -36,13 +37,23 @@ const ProductsTable: React.FC = () => {
   useEffect(() => {
     setLoading(true)
     getProducts().then((response) => {
-      console.log(response)
+      // console.log(response)
       const products: Product[] = response,
-        productsMap: ProductMap = {}
+        productsMap: ProductMap = {},
+        uniqueColums: string[] = []
 
       products.forEach((item: Product) => {
         productsMap[item.id] = item
+
+        // collect unquie comparable keys which have values as number
+        Object.keys(item).forEach((key: string) => {
+          if (key !== 'name' && key !== 'tags' && typeof item[key] === 'number' && uniqueColums.indexOf(key) === -1)
+            uniqueColums.push(key)
+        })
       })
+
+      // console.log({ uniqueColums })
+      setComparableColumns(uniqueColums)
       setLoading(false)
       setProducts(products)
       setProductsMap(productsMap)
@@ -54,7 +65,7 @@ const ProductsTable: React.FC = () => {
       {loading ? (
         <ProgressIndicator message="Loading products..." />
       ) : (
-        <section>
+        <section className={styles.section}>
           <div className={styles.info}>
             <div>
               {selectedProducts.length === 2
@@ -82,25 +93,22 @@ const ProductsTable: React.FC = () => {
               <thead>
                 <tr>
                   <th>Product</th>
-                  <th>Tags</th>
-                  <th>Energy</th>
-                  <th>Protein</th>
-                  <th>Fat</th>
-                  <th>Carbohydrate</th>
-                  <th>Sugars</th>
-                  <th>Dietry Fibre</th>
-                  <th>Sodium</th>
+                  {comparableColumns.map((item: string) => (
+                    <th key={item}>{item}</th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
                 {selectedProducts.length === 2 && showCompare ? (
                   <CompareInfo
+                    comparableColumns={comparableColumns}
                     product1={productsMap[selectedProducts[0]]}
                     product2={productsMap[selectedProducts[1]]}
                   />
                 ) : null}
                 {products.slice((pageNum - 1) * perPage, perPage * pageNum - 1).map((product: Product) => (
                   <ProductsTableItem
+                    comparableColumns={comparableColumns}
                     highlight={selectedProducts.includes(product.id)}
                     key={product.id}
                     product={product}

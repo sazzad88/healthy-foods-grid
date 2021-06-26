@@ -2,7 +2,15 @@ import React from 'react'
 import { Product } from '@/api/types'
 import styles from './Products-table.module.css'
 
-function CompareInfo({ product1, product2 }: { product1: Product; product2: Product }) {
+function CompareInfo({
+  product1,
+  product2,
+  comparableColumns
+}: {
+  product1: Product
+  product2: Product
+  comparableColumns: string[]
+}) {
   const compareMarkup = (key: string) => {
     return product1[key] !== product2[key] ? (
       <>
@@ -21,14 +29,9 @@ function CompareInfo({ product1, product2 }: { product1: Product; product2: Prod
         vs <br />
         {product2.name}
       </td>
-      <td>11</td>
-      <td>{compareMarkup('energy')}</td>
-      <td> {compareMarkup('protein')}</td>
-      <td> {compareMarkup('fat')}</td>
-      <td> {compareMarkup('carbohydrate')}</td>
-      <td> {compareMarkup('sugars')}</td>
-      <td> {compareMarkup('dietaryFibre')}</td>
-      <td> {compareMarkup('sodium')}</td>
+      {comparableColumns.map((item: string) => (
+        <td key={`c${item}`}>{compareMarkup(item)}</td>
+      ))}
     </tr>
   )
 }

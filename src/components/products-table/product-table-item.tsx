@@ -4,10 +4,12 @@ import styles from './Products-table.module.css'
 import { Product } from '@/api/types'
 
 function ProductsTableItem({
+  comparableColumns,
   highlight,
   product,
   attachProduct
 }: {
+  comparableColumns: string[]
   highlight: boolean
   product: Product
   attachProduct: (id: string) => void
@@ -20,14 +22,9 @@ function ProductsTableItem({
       }}
     >
       <td style={{ width: '150px' }}>{product.name}</td>
-      <td style={{ width: '180px' }}>{product.tags ? product.tags.join(',') : '-'}</td>
-      <td>{product.energy}</td>
-      <td>{product.protein}</td>
-      <td>{product.fat}</td>
-      <td>{product.carbohydrate}</td>
-      <td>{product.sugars}</td>
-      <td>{product.dietaryFibre}</td>
-      <td>{product.sodium}</td>
+      {comparableColumns.map((item: string) => (
+        <td key={`s${item}`}>{product[item]}</td>
+      ))}
     </tr>
   )
 }
