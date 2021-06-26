@@ -1,0 +1,16 @@
+.datatable {
+  margin: 20px 0;
+  background: #424242;
+}
+
+.datatable thead {
+  background: #303030;
+  border-color: #303030;
+}
+
+.datatable th,
+.datatable td {
+  padding: 20px 10px;
+  cursor: pointer;
+  text-align: center;
+}
