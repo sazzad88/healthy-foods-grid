@@ -43,6 +43,7 @@
 }
 
 .datatable {
+  position: relative;
   margin: 0px;
   background: #424242;
   border: none;
@@ -62,6 +63,17 @@
   padding: 15px 15px;
   cursor: pointer;
   text-align: center;
+}
+
+.datatable th {
+  position: sticky;
+  top: 0;
+  background: #303030;
+}
+
+.datatable tr.compare {
+  position: sticky;
+  top: 50px;
 }
 
 .compare td {
